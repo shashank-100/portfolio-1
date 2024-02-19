@@ -1,0 +1,27 @@
+// @import '/src/styles/variables';
+
+.saying-details {
+  position: relative;
+  padding: 40px 0;
+
+  &::before,
+  &::after {
+    font-size: 5rem;
+    // font-family: monospace, $body-font-family;
+    font-family: monospace;
+    position: absolute;
+    line-height: 2rem;
+    color: rgba($color: #000000, $alpha: 0.3);
+  }
+
+  &::before {
+    content: '“';
+    top: 16px;
+    left: 0;
+  }
+  &::after {
+    content: '”';
+    bottom: -27px;
+    right: 0;
+  }
+}

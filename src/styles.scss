@@ -1,1 +1,101 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import './styles/index.scss';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.body-font {
+  font-family: $body-font-family;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  @extend .body-font;
+  margin: 0;
+  padding: 0;
+  background-color: $body-bg-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @media (min-width: 1536px) {
+    max-width: 1280px;
+  }
+  @media (min-width: 1920px) {
+    max-width: 1536px;
+  }
+}
+
+.page-section {
+  padding: 80px 0;
+  // min-height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+}
+
+.section-heading {
+  position: relative;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  margin-bottom: 40px;
+
+  @media (max-width: $screen-md) {
+    font-size: 2rem;
+    margin-bottom: 25px;
+  }
+  @media (max-width: $screen-sm) {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  & > span {
+    color: rgba(0, 0, 0, 0.3);
+    text-shadow: none;
+    text-transform: none;
+    letter-spacing: initial;
+    font-weight: 200;
+  }
+}
+
+.btn {
+  border-radius: 2px;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  @extend .btn;
+  background-color: $btn-primary-bg-color;
+}

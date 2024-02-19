@@ -1,0 +1,39 @@
+<section class="page-section">
+  <div class="container">
+    <h1 class="section-heading">Testimonials <span>Nice Things People Have Said</span></h1>
+
+    <div class="flex flex-col gap-10">
+      @for (testimonial of testimonials; track $index) {
+        <div class="py-5 px-8 rounded-xl transition-all bg-white shadow-md">
+          <div class="flex max-md:flex-col gap-5">
+            <div class="saying-details flex-1 flex flex-col gap-3">
+              @for (say of testimonial.says; track $index) {
+                <p class="text-sm leading-6 mb-0">{{ say }}</p>
+              }
+            </div>
+
+            <div
+              class="basis-[20%] {{
+                $index % 2 === 0 ? 'order-1' : '-order-1'
+              }} max-md:-order-1 flex md:flex-col items-center gap-2 max-md:gap-4"
+            >
+              <img
+                class="w-[130px] max-md:w-[90px] rounded-[50%] border-[4px] border-white shadow-md"
+                src="/assets/images/testimonials/{{ testimonial.img.src }}"
+                alt="{{ testimonial.name }}"
+              />
+
+              <div class="flex flex-col md:items-center gap-1">
+                <h4 class="font-semibold">{{ testimonial.name }}</h4>
+                <p class="text-sm">{{ testimonial.designation }}</p>
+                <a href="{{ testimonial.linkdinUrl }}" target="_blank">
+                  <img class="w-[25px]" src="/assets/images/icons/linkedin.svg" alt="Linkedin" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
