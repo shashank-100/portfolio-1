@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { HeroComponent } from './components/sections/hero/hero.component';
 import { AboutComponent } from './components/sections/about/about.component';
 import { ExperienceComponent } from './components/sections/experience/experience.component';
@@ -7,11 +8,13 @@ import { ProjectsComponent } from './components/sections/projects/projects.compo
 import { TestimonialsComponent } from './components/sections/testimonials/testimonials.component';
 import { ContactComponent } from './components/sections/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
+    HeaderComponent,
     HeroComponent,
     AboutComponent,
     ExperienceComponent,

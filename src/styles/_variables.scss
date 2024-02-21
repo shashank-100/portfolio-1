@@ -9,5 +9,8 @@ $screen-2xl: '1536px';
 $body-bg-color: #f5f5f7;
 $body-font-family: 'Poppins', Arial, Helvetica, sans-serif;
 
+// Colors
+$primary-color: #000103;
+
 // Button
-$btn-primary-bg-color: #000103;
+$btn-primary-bg-color: $primary-color;

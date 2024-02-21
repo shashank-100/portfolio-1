@@ -50,6 +50,9 @@
               "node_modules/@fortawesome/fontawesome-svg-core/styles.css",
               "src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [""]
+            },
             "scripts": [],
             "server": "src/main.server.ts",
             "prerender": true,
