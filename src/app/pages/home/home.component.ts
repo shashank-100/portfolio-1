@@ -4,7 +4,7 @@ import { HeroComponent } from './components/sections/hero/hero.component';
 import { AboutComponent } from './components/sections/about/about.component';
 import { ExperienceComponent } from './components/sections/experience/experience.component';
 import { SkillsComponent } from './components/sections/skills/skills.component';
-import { ProjectsComponent } from './components/sections/projects/projects.component';
+// import { ProjectsComponent } from './components/sections/projects/projects.component';
 import { TestimonialsComponent } from './components/sections/testimonials/testimonials.component';
 import { ContactComponent } from './components/sections/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -19,7 +19,7 @@ import { HeaderComponent } from './components/header/header.component';
     AboutComponent,
     ExperienceComponent,
     SkillsComponent,
-    ProjectsComponent,
+    // ProjectsComponent,
     TestimonialsComponent,
     ContactComponent,
     FooterComponent,

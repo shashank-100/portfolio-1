@@ -1,6 +1,12 @@
+@import '/src/styles/variables';
+
 .page-section {
   min-height: calc(100vh - 40px);
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: $screen-sm) {
+    min-height: auto;
+  }
 }
