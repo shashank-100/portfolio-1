@@ -2,12 +2,29 @@
 
 header {
   height: 40px;
-  // background: rgba(22, 22, 23, 0.8);
-  // position: fixed;
-  // top: 0;
-  // width: 100%;
-  // left: 0;
-  // z-index: 10;
+  transition: top 350ms ease-in-out;
+
+  &.slide-in {
+    top: 0 !important;
+  }
+
+  &.float-in {
+    background: rgba($primary-color, 0.8);
+    border-bottom: none;
+    position: fixed;
+    top: -40px;
+    width: 100%;
+    left: 0;
+    z-index: 10;
+
+    nav a {
+      color: rgba(white, 0.7);
+
+      &:hover {
+        color: white;
+      }
+    }
+  }
 
   nav a {
     color: rgba($primary-color, 0.7);
@@ -15,7 +32,6 @@ header {
     &:hover {
       color: $primary-color;
       text-shadow: 0.5px 0.5px rgba($primary-color, 0.2);
-      // font-weight: 500;
     }
   }
 }

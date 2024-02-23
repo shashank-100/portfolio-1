@@ -1,4 +1,12 @@
-import { Component, OnDestroy, OnInit, inject } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+  inject,
+} from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -10,8 +18,16 @@ import { Subscription } from 'rxjs';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  @ViewChild('header') headerElemRef!: ElementRef<HTMLElement>;
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    this.setHeaderFloating();
+  }
+
   activatedRoute = inject(ActivatedRoute);
 
+  oldScrollY: number = 0;
   subs: Subscription[] = [];
 
   ngOnInit(): void {
@@ -20,6 +36,41 @@ export class HeaderComponent implements OnInit, OnDestroy {
         if (fragment) this.goToSection(fragment);
       }),
     );
+  }
+
+  isScrollingUp() {
+    let isDirectionUp = this.oldScrollY > window.scrollY;
+    this.oldScrollY = window.scrollY;
+
+    return isDirectionUp;
+  }
+
+  setHeaderFloating() {
+    if (typeof window == 'undefined' || !this.headerElemRef) return;
+
+    const headerHeight = 40;
+    const elem = this.headerElemRef.nativeElement;
+    const isFloating = window.scrollY > headerHeight + 5;
+
+    // Method 2
+    if (isFloating) {
+      elem.classList.add('float-in');
+      document.body.style.paddingTop = `${headerHeight}px`;
+
+      if (this.isScrollingUp()) {
+        elem.classList.add('slide-in');
+      } else {
+        elem.classList.remove('slide-in');
+      }
+    } else {
+      elem.classList.remove('slide-in');
+      setTimeout(() => {
+        if (elem.classList.contains('float-in')) {
+          elem.classList.remove('float-in');
+          document.body.style.paddingTop = 'initial';
+        }
+      }, 350);
+    }
   }
 
   goToSection(section: string) {
