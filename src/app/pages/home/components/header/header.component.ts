@@ -6,14 +6,17 @@ import {
   OnInit,
   ViewChild,
   inject,
+  signal,
 } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, FontAwesomeModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -22,13 +25,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
-    this.setHeaderFloating();
+    if (typeof window == 'undefined') return;
+
+    if (window.innerWidth > 640) {
+      this.setHeaderFloating();
+    }
   }
+  // @HostListener('window:resize', ['$event'])
+  // onWindowResize() {
+  //   console.log('resize');
+  //   this.mobileMenuOpen.set(false);
+  //   this.headerElemRef.nativeElement?.classList.remove('menu-close');
+  // }
 
   activatedRoute = inject(ActivatedRoute);
 
+  icons = { faBars, faXmark };
   oldScrollY: number = 0;
   subs: Subscription[] = [];
+  mobileMenuOpen = signal(false);
 
   ngOnInit(): void {
     this.subs.push(
@@ -46,7 +61,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   setHeaderFloating() {
-    if (typeof window == 'undefined' || !this.headerElemRef) return;
+    if (!this.headerElemRef) return;
 
     const headerHeight = 40;
     const elem = this.headerElemRef.nativeElement;
@@ -71,6 +86,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
         }
       }, 350);
     }
+  }
+
+  setMobileMenuOpen(open: boolean) {
+    const headerElem = this.headerElemRef.nativeElement;
+    if (!headerElem) return;
+
+    // this.mobileMenuOpen.set(open);
+    // headerElem.classList.toggle('menu-open', open);
+    // headerElem.classList.toggle('menu-close', !open);
   }
 
   goToSection(section: string) {

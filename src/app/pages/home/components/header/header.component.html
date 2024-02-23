@@ -1,5 +1,27 @@
-<header class="header flex justify-center items-center border-b border-gray-300" #header>
-  <nav class="flex gap-5 text-sm">
+@if (!mobileMenuOpen()) {
+  <button class="hidden max-sm:block fixed top-3 right-4" (click)="setMobileMenuOpen(true)">
+    <fa-icon
+      [icon]="icons.faBars"
+      class="text-[22px] opacity-70 hover:opacity-100 transition-opacity"
+    ></fa-icon>
+  </button>
+}
+
+<header
+  class="header flex max-sm:flex-col sm:justify-center sm:items-center border-b border-gray-300"
+  #header
+>
+  <button
+    class="hidden max-sm:block text-[rgba(255,255,255,0.7)] hover:text-white self-end m-3 mb-0"
+    (click)="setMobileMenuOpen(false)"
+  >
+    <fa-icon
+      [icon]="icons.faXmark"
+      class="text-[22px] opacity-70 hover:opacity-100 transition-opacity"
+    ></fa-icon>
+  </button>
+
+  <nav class="flex gap-5 text-sm max-sm:flex-col max-sm:w-full">
     <a routerLink="/" fragment="about">About</a>
     <a routerLink="/" fragment="experience">Experience</a>
     <a routerLink="/" fragment="skills">Skills</a>
