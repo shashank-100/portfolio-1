@@ -1,18 +1,19 @@
-<header
-  class="header flex max-sm:flex-col sm:justify-center sm:items-center border-b border-gray-300"
-  #header
->
-  <nav class="flex gap-5 text-sm max-sm:flex-col">
-    @for (navLink of navLinks; track navLink.fragment) {
-      <a
-        [ngClass]="{ 'active': navLink.fragment === activeFragmentSig() }"
-        [routerLink]="navLink.routerLink"
-        [fragment]="navLink.fragment"
-        (click)="onNavLinkClick()"
-        >{{ navLink.label }}
-      </a>
-    }
-  </nav>
+<header class="header flex border-b border-gray-300" #header>
+  <div class="container flex items-center justify-center gap-10 max-sm:px-0">
+    <!-- <a class="logo" routerLink="/" (click)="onLogoClick()">A</a> -->
+
+    <nav class="flex gap-5 text-sm max-sm:flex-col">
+      @for (navLink of navLinks; track navLink.fragment) {
+        <a
+          [ngClass]="{ 'active': navLink.fragment === activeFragmentSig() }"
+          [routerLink]="navLink.routerLink"
+          [fragment]="navLink.fragment"
+          (click)="onNavLinkClick()"
+          >{{ navLink.label }}
+        </a>
+      }
+    </nav>
+  </div>
 </header>
 
 <button

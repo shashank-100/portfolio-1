@@ -75,6 +75,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
   }
 
+  onLogoClick() {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }
+
   isScrollingUp() {
     let isDirectionUp = this.oldScrollY > window.scrollY;
     this.oldScrollY = window.scrollY;

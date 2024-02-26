@@ -1,5 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 type Experience = {
   name: string;
@@ -7,9 +9,8 @@ type Experience = {
   website?: string;
   logo: string;
   location: string;
-  designation: string;
-  start_date: string;
-  end_date: string;
+  designations: { title: string; start_date: string; end_date: string }[];
+  employment_type: string;
   descriptionList: string[];
   usedSkills: string[];
 };
@@ -17,11 +18,13 @@ type Experience = {
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FontAwesomeModule],
   templateUrl: './experience.component.html',
   styleUrl: './experience.component.scss',
 })
 export class ExperienceComponent {
+  icons = { faArrowUpRightFromSquare };
+
   experiences: Experience[] = [
     {
       name: 'TWIG Finance',
@@ -29,9 +32,10 @@ export class ExperienceComponent {
       logo: 'twig-finance.png',
       themeColor: 'rgba(86,214,229,1)',
       location: 'Dubai UAE',
-      designation: 'Senior Frontend Developer',
-      start_date: 'July 2023',
-      end_date: 'Oct 2023',
+      designations: [
+        { title: 'Senior Frontend Developer', start_date: 'July 2023', end_date: 'Oct 2023' },
+      ],
+      employment_type: 'Full-time',
       descriptionList: [
         'Responsible for adding new features by understanding the process and workfl ow of the feature and implementing them using Next.js.',
         'Responsible for creating new pages for the customer portal dashboard, and creating reusable components using the latest technologies like Next.js with Typescript, redux-toolkit, and Tailwind.',
@@ -48,9 +52,10 @@ export class ExperienceComponent {
       logo: 'wecover.jpg',
       themeColor: 'rgba(74,195,173,1)',
       location: 'Dubai UAE',
-      designation: 'Senior Frontend Developer',
-      start_date: 'Apr 2023',
-      end_date: 'May 2023',
+      designations: [
+        { title: 'Senior Frontend Developer', start_date: 'Apr 2023', end_date: 'May 2023' },
+      ],
+      employment_type: 'Freelance',
       descriptionList: [
         "Contributed to the end-to-end development of the company's web applications. This involved designing, developing, and maintaining the frontend components, along with integrating and managing the database using technologies like Next.js, Node.js, and MongoDB.",
         'By utilizing Node.js and frameworks like Express.js, I engineered the server-side logic to handle data processing, user authentication, and API integrations.',
@@ -61,13 +66,12 @@ export class ExperienceComponent {
       usedSkills: ['Next.js', 'React.js', 'TypeScript', 'JavaScript', 'Redux.js', 'React Query'],
     },
     {
-      name: 'Addenda Technologies LTD',
+      name: 'Hala Insurance',
       website: 'https://www.linkedin.com/company/joinhala/',
       logo: 'hala.jpg',
       location: 'Dubai UAE',
-      designation: 'Frontend Developer',
-      start_date: 'Aug 2019',
-      end_date: 'Mar 2023',
+      designations: [{ title: 'Frontend Developer', start_date: 'Aug 2019', end_date: 'Mar 2023' }],
+      employment_type: 'Full-time',
       descriptionList: [
         'Experience in full-stack web development, including the design and implementation of company websites and web applications.',
         'Hands-on experience with large-scale Angular-based SaaS projects for insurance companies, including the development of admin panels and dashboards.',
@@ -96,17 +100,23 @@ export class ExperienceComponent {
       ],
     },
     {
-      name: 'Green Toad Technologies',
-      logo: 'greentoad.png',
+      name: 'TheDroid.io',
+      website: 'https://thedroid.io/',
+      logo: 'thedroid.jpg',
       location: 'Bengaluru',
-      designation: 'Senior Frontend Developer',
-      start_date: 'Feb 2019',
-      end_date: 'Jun 2019',
+      designations: [
+        { title: 'Full Stack Web Developer', start_date: 'Feb 2019', end_date: 'Jun 2019' },
+        { title: 'Backend Developer', start_date: 'Mar 2018', end_date: 'Feb 2019' },
+      ],
+      employment_type: 'Full-time',
       descriptionList: [
-        'Expertise in full stack development, with a focus on designing and implementing RESTful API backends for web applications using technologies such as Node.js, and Express. ',
+        'Expertise in full-stack web development, with a focus on designing and implementing robust RESTful API backends for web applications using technologies such as Node.js, Express, MySql, and MongoDB.',
         'Worked on dynamic front-end admin dashboards using technologies like Angular, ensuring a seamless user experience.',
         'Experience in integrating backend APIs with front-end web applications.',
         'Successfully deployed multiple production-ready front-end web applications using technologies like AWS, Google Cloud, and Firebase.',
+        'Skilled in developing and maintaining databases and schema structures using MySQL and Sequelize.js, ensuring data integrity and efficient query performance.',
+        'Expertise in deploying backend applications in both development and production environments using technologies such as Google Cloud, and Docker.',
+        'Experience in creating and inserting SSL certificates to secure domains, ensuring data security.',
       ],
       usedSkills: [
         'Angular',
@@ -118,27 +128,8 @@ export class ExperienceComponent {
         'Bootstrap',
         'jQuery',
         'Responsive Web Design',
-      ],
-    },
-    {
-      name: 'TheDroid.io',
-      website: 'https://thedroid.io/',
-      logo: 'thedroid.jpg',
-      location: 'Bengaluru',
-      designation: 'Backend Developer',
-      start_date: 'Mar 2018',
-      end_date: 'Feb 2019',
-      descriptionList: [
-        'Proven experience in designing and implementing robust RESTful API backends for web applications using technologies such as Node.js, Express, MySql, and MongoDB.',
-        'Skilled in developing and maintaining databases and schema structures using MySQL and Sequelize.js, ensuring data integrity and efficient query performance.',
-        'Expertise in deploying backend applications in both development and production environments using technologies such as Google Cloud, and Docker.',
-        'Experience in creating and inserting SSL certificates to secure domains, ensuring data security.',
-      ],
-      usedSkills: [
-        'Node.js',
         'Express.js',
         'REST APIs',
-        'MySQL',
         'Firebase',
         'SQL',
         'Sequelize.js',

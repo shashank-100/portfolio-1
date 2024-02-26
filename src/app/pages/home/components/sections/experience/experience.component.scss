@@ -1,0 +1,8 @@
+.company-web-link {
+  &:hover {
+    .icon {
+      transition: transform 250ms ease-in-out;
+      transform: translate(2px, -2px);
+    }
+  }
+}
