@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
 
 @Component({
   selector: 'app-testimonials',
@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
   templateUrl: './testimonials.component.html',
   styleUrl: './testimonials.component.scss',
 })
-export class TestimonialsComponent {
+export class TestimonialsComponent implements AfterViewInit {
+  @ViewChildren('sayingDetails') sayingDetailsElems!: QueryList<ElementRef<HTMLDivElement>>;
+
   testimonials = [
     {
       name: 'Harsh Ajmera',
@@ -34,4 +36,32 @@ export class TestimonialsComponent {
       ],
     },
   ];
+
+  ngAfterViewInit(): void {
+    this.sayingDetailsElems.forEach((itemElem) => {
+      if (this.isElemContentOverflowing(itemElem.nativeElement)) {
+        const seeMoreBtn = itemElem.nativeElement.querySelector('button');
+        if (seeMoreBtn) seeMoreBtn.style.display = 'block';
+      }
+    });
+  }
+
+  isElemContentOverflowing(el: HTMLDivElement | null) {
+    if (!el) return false;
+
+    const curOverflow = el.style.overflow;
+    if (!curOverflow || curOverflow === 'visible') {
+      el.style.overflow = 'hidden';
+    }
+
+    const isOverflowing = el.clientWidth < el.scrollWidth || el.clientHeight < el.scrollHeight;
+
+    el.style.overflow = curOverflow;
+    return isOverflowing;
+  }
+
+  onClickSeeMore(elem: HTMLDivElement, seeMoreBtn: HTMLButtonElement) {
+    elem.style.display = 'block';
+    seeMoreBtn.style.display = 'none';
+  }
 }

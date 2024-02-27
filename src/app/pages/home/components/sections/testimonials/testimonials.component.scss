@@ -1,6 +1,6 @@
 // @import '/src/styles/variables';
 
-.saying-details {
+.saying-wrapper {
   position: relative;
   padding: 40px 0;
 
@@ -21,7 +21,23 @@
   }
   &::after {
     content: '”';
-    bottom: -27px;
+    bottom: -20px;
     right: 0;
+  }
+
+  .saying-details {
+    position: relative;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+
+    .see-more-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      padding-left: 30px;
+      background-color: white;
+    }
   }
 }

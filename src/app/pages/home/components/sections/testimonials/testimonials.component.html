@@ -6,10 +6,20 @@
       @for (testimonial of testimonials; track $index) {
         <div class="py-5 px-8 rounded-xl transition-all bg-white shadow-md">
           <div class="flex max-md:flex-col gap-5">
-            <div class="saying-details flex-1 flex flex-col gap-3">
-              @for (say of testimonial.says; track $index) {
-                <p class="text-sm leading-6 mb-0">{{ say }}</p>
-              }
+            <div class="saying-wrapper flex-1" #sayingWrapper>
+              <div class="saying-details" #sayingDetails>
+                @for (say of testimonial.says; track $index) {
+                  <span class="text-sm leading-6 mb-3 last:mb-0 block">{{ say }}</span>
+                }
+
+                <button
+                  class="see-more-btn hidden text-sm text-gray-500"
+                  (click)="onClickSeeMore(sayingDetails, seeMoreBtn)"
+                  #seeMoreBtn
+                >
+                  ...see more
+                </button>
+              </div>
             </div>
 
             <div
