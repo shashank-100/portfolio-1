@@ -1,5 +1,5 @@
-<section id="contact" class="page-section">
-  <div class="container flex max-md:flex-col gap-10">
+<section id="contact" class="page-section bg-color-green text-white">
+  <div class="container flex max-md:flex-col lg:gap-20 max-lg:gap-10">
     <div class="basis-[40%]">
       <div class="mb-10 max-md:mb-5">
         <h1 class="section-heading !mb-2">Get In Touch</h1>
@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <div class="flex-1 p-8 rounded-xl transition-all bg-white shadow-md">
+    <div class="flex-1 p-8 transition-all bg-white text-color-black shadow-lg">
       @if (showApiRespSig(); as apiResp) {
         <div
           class="px-3 py-2 rounded relative text-sm mb-4"
@@ -119,10 +119,15 @@
         <div class="flex justify-end">
           <button
             type="submit"
-            class="submit-btn bg-primary text-white text-sm rounded px-16 py-2 hover:opacity-90 transition-opacity disabled:bg-gray-400"
+            class="submit-btn btn-primary flex gap-3 items-center"
             [disabled]="isSubmitInProcessSig()"
           >
-            {{ isSubmitInProcessSig() ? 'Processing...' : 'Send Message' }}
+            @if (isSubmitInProcessSig()) {
+              Processing...
+            } @else {
+              <span>Send Message</span>
+              <fa-icon [icon]="icons.faArrowRightLong" class="icon text-[18px]" />
+            }
           </button>
         </div>
       </form>

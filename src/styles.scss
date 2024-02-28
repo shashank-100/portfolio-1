@@ -27,8 +27,8 @@ body {
   @extend .body-font;
   margin: 0;
   padding: 0;
-  background-color: $body-bg-color;
-  color: $primary-color;
+  background-color: $color-body;
+  color: $color-black;
 }
 
 h1,
@@ -90,13 +90,30 @@ h6 {
 }
 
 .btn {
-  border-radius: 2px;
-  padding: 10px 20px;
+  padding: 12px 18px;
   border: none;
   outline: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: opacity 250ms ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .btn-primary {
   @extend .btn;
-  background-color: $btn-primary-bg-color;
+  background-color: $color-yellow;
+  color: $color-black;
+
+  &:disabled {
+    color: rgba($color-black, 0.5);
+    background-color: rgba($color-yellow, 0.5);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
 }

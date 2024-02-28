@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone, faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 import { ContactService } from './contact.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { ContactService } from './contact.service';
 export class ContactComponent {
   contactServ = inject(ContactService);
 
-  icons = { faEnvelope, faPhone };
+  icons = { faEnvelope, faPhone, faArrowRightLong };
 
   formData = new FormGroup({
     name: new FormControl('', [Validators.required]),

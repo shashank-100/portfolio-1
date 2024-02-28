@@ -1,10 +1,10 @@
-<footer class="border-t border-[rgba(0,0,0,0.2)] py-[10px]">
+<footer class="bg-color-black-bg text-white py-[10px]">
   <div class="container flex items-center justify-between max-md:flex-col gap-2">
     <div class="text-sm">
       © {{ currentYear }} | Designed & Built by <strong class="font-semibold">Anil Kumar</strong>
     </div>
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-4">
       @for (item of socials; track $index) {
         <a href="{{ item.url }}" target="_blank" rel="noreferrer noopener">
           <fa-icon

@@ -4,7 +4,7 @@
 
     <div class="flex flex-col gap-10">
       @for (testimonial of testimonials; track $index) {
-        <div class="py-5 px-8 rounded-xl transition-all bg-white shadow-md">
+        <div class="py-5 px-8 transition-all bg-white shadow-lg">
           <div class="flex max-md:flex-col gap-5">
             <div class="saying-wrapper flex-1" #sayingWrapper>
               <div class="saying-details" #sayingDetails>
@@ -33,7 +33,7 @@
                 alt="{{ testimonial.name }}"
               />
 
-              <div class="flex flex-col md:items-center gap-1">
+              <div class="flex flex-col md:items-center md:text-center gap-1">
                 <h4 class="font-semibold">{{ testimonial.name }}</h4>
                 <p class="text-sm">{{ testimonial.designation }}</p>
                 <a href="{{ testimonial.linkdinUrl }}" target="_blank">

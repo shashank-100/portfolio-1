@@ -24,6 +24,7 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('header') headerElemRef!: ElementRef<HTMLElement>;
+  @ViewChild('navbar') navbarElemRef!: ElementRef<HTMLElement>;
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
@@ -89,7 +90,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   changeHeaderFloating() {
     if (typeof window == 'undefined' || !this.headerElemRef || window.innerWidth < 640) return;
 
-    const headerHeight = 40;
+    const headerHeight = 50;
     this.isHeaderFloatingSig.set(window.scrollY > headerHeight + 5);
 
     if (this.isHeaderFloatingSig()) {
@@ -125,7 +126,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   setMobileMenuOpen(open: boolean) {
-    this.headerElemRef.nativeElement?.classList.toggle('menu-open', open);
+    this.navbarElemRef.nativeElement?.classList.toggle('menu-open', open);
   }
 
   goToSection(section: string) {

@@ -1,65 +1,54 @@
 @import '/src/styles/variables';
 
-$header-height: 40px;
-
 header {
+  position: relative;
   height: $header-height;
   transition: top 350ms ease-in-out;
-
-  @media (max-width: $screen-sm) {
-    display: none;
-    height: auto;
-    background-color: $primary-color;
-    position: fixed;
-    top: calc($header-height + 5px);
-    right: 15px;
-    border-radius: 4px;
-    border-bottom: none;
-    box-shadow:
-      0 3px 6px rgba(0, 0, 0, 0.16),
-      0 3px 6px rgba(0, 0, 0, 0.23);
-    z-index: 10;
-  }
-
-  &.menu-open {
-    display: block;
-  }
 
   &.slide-in {
     top: 0 !important;
   }
 
-  // .logo {
-  //   display: block;
-  //   font-family: serif;
-  //   border-radius: 50%;
-  //   width: 30px;
-  //   height: 30px;
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   border: 2px solid $primary-color;
-  //   font-size: 1.2rem;
-  //   user-select: none;
-  // }
-
   nav {
+    display: flex;
+
     @media (max-width: $screen-sm) {
-      gap: 2px;
+      gap: 10px;
       min-width: 150px;
       padding: 8px;
+      display: none;
+      background-color: rgba($color-black, 0.8);
+      position: fixed;
+      top: calc($header-height + 5px);
+      right: 15px;
+      border-radius: 4px;
+      border-bottom: none;
+      box-shadow:
+        0 3px 6px rgba(0, 0, 0, 0.16),
+        0 3px 6px rgba(0, 0, 0, 0.23);
+      z-index: 10;
+    }
+
+    &.menu-open {
+      display: flex;
     }
 
     a {
-      color: rgba($primary-color, 0.7);
+      display: inline-block;
+      position: relative;
+      color: rgba(white, 0.7);
 
       &:hover {
-        color: $primary-color;
+        color: white;
         text-shadow: 0.5px 0.5px rgba($primary-color, 0.2);
+
+        &::before {
+          width: 100%;
+        }
       }
 
       &.active {
-        color: $primary-color;
+        color: white;
         text-shadow: 0.5px 0.5px rgba($primary-color, 0.2);
       }
 
@@ -76,23 +65,30 @@ header {
           color: white;
         }
       }
+
+      &::before {
+        content: '';
+        display: block;
+        height: 1.5px;
+        width: 0;
+        background-color: $color-orange;
+        position: absolute;
+        bottom: -4px;
+        left: 0.5px;
+        transition: width 250ms ease-in-out;
+      }
     }
   }
 }
 
 header.float-in {
-  background-color: rgba($primary-color, 0.8);
+  background-color: rgba($color-black, 0.8);
   border-bottom: none;
   position: fixed;
-  top: -40px;
+  top: -$header-height;
   width: 100%;
   left: 0;
   z-index: 10;
-
-  // .logo {
-  //   color: rgba(white, 0.7);
-  //   border-color: rgba(white, 0.7);
-  // }
 
   nav a {
     color: rgba(white, 0.7);

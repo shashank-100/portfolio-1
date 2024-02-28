@@ -1,8 +1,10 @@
-<header class="header flex border-b border-gray-300" #header>
-  <div class="container flex items-center justify-center gap-10 max-sm:px-0">
-    <!-- <a class="logo" routerLink="/" (click)="onLogoClick()">A</a> -->
+<header class="header flex shadow" #header>
+  <div class="container flex items-center justify-between gap-10">
+    <a class="logo text-[1.2rem] text-white font-[500]" routerLink="/" (click)="onLogoClick()"
+      >Portfolio.</a
+    >
 
-    <nav class="flex gap-5 text-sm max-sm:flex-col">
+    <nav class="flex gap-5 text-sm max-sm:flex-col" #navbar>
       @for (navLink of navLinks; track navLink.fragment) {
         <a
           [ngClass]="{ 'active': navLink.fragment === activeFragmentSig() }"
@@ -13,22 +15,29 @@
         </a>
       }
     </nav>
+
+    <div class="flex gap-4">
+      <a
+        class="text-[0.8rem] px-3 py-1 bg-transparent border-2 border-color-yellow text-white font-[500] transition-colors hover:bg-color-yellow hover:text-black"
+        href="/src/assets/resume.pdf"
+        target="_blank"
+      >
+        Resume
+      </a>
+
+      <button
+        class="hidden text-white max-sm:block opacity-90 hover:opacity-100 transition-opacity"
+        (click)="isMobileMenuOpenSig.set(!isMobileMenuOpenSig())"
+      >
+        @if (isMobileMenuOpenSig()) {
+          <fa-icon [icon]="icons.faXmark" class="text-[22px]"></fa-icon>
+        } @else {
+          <fa-icon
+            [icon]="icons.faBars"
+            class="text-[22px] opacity-80 hover:opacity-100 transition-opacity"
+          ></fa-icon>
+        }
+      </button>
+    </div>
   </div>
 </header>
-
-<button
-  class="hidden max-sm:block fixed top-3 right-4"
-  (click)="isMobileMenuOpenSig.set(!isMobileMenuOpenSig())"
->
-  @if (isMobileMenuOpenSig()) {
-    <fa-icon
-      [icon]="icons.faXmark"
-      class="text-[22px] opacity-70 hover:opacity-100 transition-opacity"
-    ></fa-icon>
-  } @else {
-    <fa-icon
-      [icon]="icons.faBars"
-      class="text-[22px] opacity-70 hover:opacity-100 transition-opacity"
-    ></fa-icon>
-  }
-</button>
