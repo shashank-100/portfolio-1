@@ -2,36 +2,50 @@
   <div class="container">
     <h1 class="section-heading">Where I’ve Worked</h1>
 
-    <div class="flex max-md:flex-col gap-16 max-lg:gap-10">
+    <div class="flex max-md:flex-col gap-12 max-lg:gap-10">
       <ul
-        class="list-none basis-[25%] max-lg:basis-[30%] max-md:basis-[100%] flex flex-col max-md:flex-row max-md:flex-wrap max-md:gap-3"
+        class="tabs-list list-none basis-[25%] max-lg:basis-[30%] max-md:basis-[100%] flex flex-col max-md:flex-row max-md:flex-wrap"
         role="list"
       >
         @for (experience of experiences; track experience.name) {
           <li
-            class="flex items-center gap-4 cursor-pointer md:px-4 md:py-5 max-md:p-2 max-md:text-sm md:border-l-[1px] border-gray-400 hover:bg-white transition-all max-md:rounded-md"
+            class="flex items-center gap-4 cursor-pointer max-md:text-sm"
             [ngClass]="{
-              'font-bold md:border-l-[4px] max-md:shadow border-primary bg-white':
-                selectedExperience().name === experience.name
+              'font-bold !gap-3': selectedExperience().name === experience.name
             }"
             (click)="onSelectExperience(experience)"
           >
-            <img
-              class="{{
-                selectedExperience().name === experience.name ? 'grayscale-0' : 'grayscale'
-              }} max-md:w-[40px]"
-              width="20px"
-              src="/assets/images/companies/{{ experience.logo }}"
-              alt="{{ experience.name }}"
-            />
-            <span class="max-md:hidden">{{ experience.name }}</span>
+            <div
+              class="img-wrapper"
+              [ngClass]="{
+                'active max-md:shadow-md': selectedExperience().name === experience.name
+              }"
+            >
+              <img
+                class="{{
+                  selectedExperience().name === experience.name ? 'grayscale-0' : 'grayscale'
+                }}"
+                width="20px"
+                src="/assets/images/companies/{{ experience.logo }}"
+                alt="{{ experience.name }}"
+              />
+            </div>
+
+            <span
+              class="comp-name max-md:!hidden"
+              [ngClass]="{
+                'active': selectedExperience().name === experience.name
+              }"
+            >
+              {{ experience.name }}
+            </span>
           </li>
         }
       </ul>
 
       <div class="flex-1">
         <h3 class="flex items-center text-lg gap-2 mb-2">
-          <span class="font-semibold">
+          <span class="font-semibold text-color-orange">
             @if (selectedExperience().website) {
               <a
                 class="company-web-link hover:underline flex gap-1.5"
@@ -71,7 +85,7 @@
 
         <ul class="flex gap-3 flex-wrap mt-5">
           @for (skill of selectedExperience().usedSkills; track $index) {
-            <li class="text-[0.7rem] py-2 px-4 bg-white rounded-full shadow font-medium">
+            <li class="text-[0.7rem] py-2 px-4 bg-white shadow-md font-medium">
               {{ skill }}
             </li>
           }
