@@ -1,10 +1,10 @@
 <header class="header flex shadow" #header>
   <div class="container flex items-center justify-between gap-10">
-    <a class="logo text-[1.2rem] text-white font-[500]" routerLink="/" (click)="onLogoClick()"
-      >Portfolio.</a
-    >
+    <a class="logo text-[1.2rem] text-white font-[500]" routerLink="/" (click)="onLogoClick()">
+      Portfolio.
+    </a>
 
-    <nav class="flex gap-5 text-sm max-sm:flex-col" #navbar>
+    <nav class="flex gap-5 text-sm max-md:flex-col" #navbar>
       @for (navLink of navLinks; track navLink.fragment) {
         <a
           [ngClass]="{ 'active': navLink.fragment === activeFragmentSig() }"
@@ -26,7 +26,7 @@
       </a>
 
       <button
-        class="hidden text-white max-sm:block opacity-90 hover:opacity-100 transition-opacity"
+        class="hidden w-[30px] text-white max-md:block opacity-90 hover:opacity-100 transition-opacity"
         (click)="isMobileMenuOpenSig.set(!isMobileMenuOpenSig())"
       >
         @if (isMobileMenuOpenSig()) {

@@ -2,6 +2,7 @@
 
 .page-section {
   margin-top: -$header-height;
+  padding-top: 80 + $header-height;
   min-height: 100vh;
   // min-height: calc(100vh - $header-height);
   display: flex;

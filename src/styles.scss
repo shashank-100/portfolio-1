@@ -10,6 +10,11 @@
   box-sizing: border-box;
 }
 
+::selection {
+  color: $color-black;
+  background: $color-yellow;
+}
+
 html,
 body {
   width: 100%;
@@ -99,7 +104,7 @@ h6 {
   transition: opacity 250ms ease-in-out;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
   }
 }
 

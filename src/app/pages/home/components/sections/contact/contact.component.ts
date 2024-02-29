@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faEnvelope, faPhone, faArrowRightLong } from '@fortawesome/free-solid-svg-icons';
 import { ContactService } from './contact.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',
@@ -15,6 +16,7 @@ import { ContactService } from './contact.service';
 })
 export class ContactComponent {
   contactServ = inject(ContactService);
+  domSenitizer = inject(DomSanitizer);
 
   icons = { faEnvelope, faPhone, faArrowRightLong };
 
@@ -33,6 +35,8 @@ export class ContactComponent {
       console.log('invalid form submit');
       return;
     }
+
+    console.log('form submitted: ', { ...this.formData.value });
 
     this.isSubmitInProcessSig.set(true);
     this.showFormErrorsSig.set(false);

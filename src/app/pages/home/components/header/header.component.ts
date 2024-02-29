@@ -29,6 +29,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     this.changeHeaderFloating();
+    if (this.isMobileMenuOpenSig()) {
+      this.isMobileMenuOpenSig.set(false);
+    }
   }
 
   @HostListener('window:resize', ['$event'])
@@ -45,6 +48,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   activatedRoute = inject(ActivatedRoute);
 
   navLinks = [
+    { label: 'Home', fragment: '', routerLink: '/' },
     { label: 'About', fragment: 'about', routerLink: '/' },
     { label: 'Experiences', fragment: 'experiences', routerLink: '/' },
     { label: 'Skills', fragment: 'skills', routerLink: '/' },
@@ -68,10 +72,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subs.push(
       this.activatedRoute.fragment.subscribe((fragment) => {
-        if (fragment) {
-          this.activeFragmentSig.set(fragment);
-          this.goToSection(fragment);
-        }
+        this.activeFragmentSig.set(fragment || '');
+        this.goToSection(fragment || '');
       }),
     );
   }
@@ -88,7 +90,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   changeHeaderFloating() {
-    if (typeof window == 'undefined' || !this.headerElemRef || window.innerWidth < 640) return;
+    if (typeof window == 'undefined' || !this.headerElemRef) return;
 
     const headerHeight = 50;
     this.isHeaderFloatingSig.set(window.scrollY > headerHeight + 5);
@@ -130,7 +132,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   goToSection(section: string) {
-    document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+    if (section) {
+      document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }
   }
 
   onNavLinkClick() {
