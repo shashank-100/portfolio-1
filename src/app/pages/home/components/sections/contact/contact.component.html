@@ -37,7 +37,10 @@
           role="alert"
         >
           <span class="block sm:inline">{{ apiResp.message }}</span>
-          <span class="absolute top-0 bottom-0 right-0 px-3 py-2">
+          <span
+            class="absolute top-0 bottom-0 right-0 px-3 py-2"
+            (click)="showApiRespSig.set(null)"
+          >
             <svg
               class="fill-current h-5 w-5 text-red-500"
               [ngClass]="{
