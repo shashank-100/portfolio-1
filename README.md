@@ -1,16 +1,16 @@
 <div align="center">
-  <img alt="Logo" src="https://raw.githubusercontent.com/Anilk1sagar/portfolio/main/src/assets/favicons/android-chrome-192x192.png" width="100" />
+  <img alt="Logo" src="https://github.com/Anilk1sagar/portfolio/blob/main/src/assets/favicons/favicon-32x32.png?raw=true" width="32" />
 </div>
 <h1 align="center">
-  anilkumar-nine.vercel.app
+  Anil Kumar Portfolio
 </h1>
 <p align="center">
   <a href="https://anilkumar-nine.vercel.app" target="_blank">anilkumar-nine.vercel.app</a> built with <a href="https://angular.dev/" target="_blank">Angular</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
 </p>
 
-![demo](https://raw.githubusercontent.com/bchiang7/v4/main/src/images/demo.png)
+![demo](https://github.com/Anilk1sagar/portfolio/blob/main/src/assets/images/demo.png?raw=true)
 
-## 🚨 Forking this repo (please read!)
+## 🚨 Forking this repo
 
 ### TL;DR
 
