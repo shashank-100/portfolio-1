@@ -7,10 +7,10 @@
 
     <div>
       <div class="flex justify-center mb-10">
-        <ul class="tabs-list flex gap-4 list-none rounded-full bg-white shadow-md" role="list">
+        <ul class="tabs-list flex list-none rounded-full bg-white shadow-md" role="list">
           @for (category of categories; track category.name) {
             <li
-              class="text-center cursor-pointer px-6 py-3 max-sm:px-4 max-sm:py-2 rounded-full transition-colors"
+              class="flex items-center justify-center cursor-pointer min-w-[120px] min-h-[45px] max-sm:min-w-[100px] max-sm:min-h-[40px] rounded-full transition-colors"
               [ngClass]="{
                 'font-semibold bg-color-yellow text-color-black':
                   selectedCategorySig() === category.name
@@ -24,7 +24,7 @@
       </div>
 
       <div
-        class="max-w-[1024px] mx-auto flex gap-16 max-sm:gap-10 flex-wrap justify-center min-h-[250px] max-md:min-h-[380px]"
+        class="max-w-[1024px] mx-auto flex gap-16 max-sm:gap-10 flex-wrap justify-center min-h-[250px] max-md:min-h-[380px] max-sm:min-h-max"
       >
         @for (skill of filteredSkills(); track skill.name) {
           <div class="flex flex-col items-center justify-between gap-3 h-max transition-all">
