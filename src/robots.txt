@@ -1,4 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 
-Sitemap: https://anilkumar-nine.vercel.app/sitemap.xml
+Sitemap: https://anilkumar.dev/sitemap.xml

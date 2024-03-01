@@ -2,10 +2,10 @@
   <img alt="Logo" src="https://github.com/Anilk1sagar/portfolio/blob/main/src/assets/favicons/favicon-32x32.png?raw=true" width="32" />
 </div>
 <h1 align="center">
-  Anil Kumar Portfolio
+  anilkumar.dev
 </h1>
 <p align="center">
-  <a href="https://anilkumar-nine.vercel.app" target="_blank">anilkumar-nine.vercel.app</a> built with <a href="https://angular.dev/" target="_blank">Angular</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
+  <a href="https://anilkumar.dev" target="_blank">anilkumar.dev</a> built with <a href="https://angular.dev/" target="_blank">Angular</a> and hosted with <a href="https://vercel.com/" target="_blank">Vercel</a>
 </p>
 
 ![demo](https://github.com/Anilk1sagar/portfolio/blob/main/src/assets/images/demo.png?raw=true)
@@ -14,7 +14,7 @@
 
 ### TL;DR
 
-Yes, you can fork this repo. Please give me proper credit by linking back to [anilkumar-nine.vercel.app](https://anilkumar-nine.vercel.app). Thanks!
+Yes, you can fork this repo. Please give me proper credit by linking back to [anilkumar.dev](https://anilkumar.dev). Thanks!
 
 ## 🛠 Installation & Set Up
 
