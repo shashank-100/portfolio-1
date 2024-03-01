@@ -50,7 +50,7 @@ export class SkillsComponent {
       img: { src: 'typescript.svg' },
     },
     {
-      name: 'JavaScript (ES2015+)',
+      name: 'JavaScript',
       category: 'frontend',
       img: { src: 'javascript.svg' },
     },
@@ -171,12 +171,13 @@ export class SkillsComponent {
     },
   ];
 
-  selectedCategory = signal<string>(this.categories[0].name);
+  selectedCategorySig = signal<string>(this.categories[0].name);
 
   filteredSkills = computed(() => {
-    if (this.selectedCategory() === 'all') {
+    const selectedCategory = this.selectedCategorySig();
+    if (selectedCategory === 'all') {
       return this.skills;
     }
-    return this.skills.filter((skill) => skill.category === this.selectedCategory());
+    return this.skills.filter((skill) => skill.category === selectedCategory);
   });
 }
