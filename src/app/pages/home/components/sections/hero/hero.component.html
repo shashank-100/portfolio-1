@@ -1,37 +1,32 @@
-<section class="page-section bg-color-green text-white">
-  <div class="container flex items-center gap-10 max-lg:gap-5 max-sm:flex-col">
-    <div class="flex-1 flex flex-col gap-3">
-      <p class="text-color-orange text-[1.1rem] font-[500] mb-0 uppercase">Hi, my name is</p>
-
-      <h1 class="xl:text-[3.5rem] lg:text-[3rem] max-lg:text-[2.4rem] leading-tight font-bold">
-        <span>Anil Kumar.</span>
-        <br />
-        <span>I build things for the web.</span>
+<section data-section-id="" class="page-section -mt-[var(--header-height)] flex min-h-[100vh] items-center justify-center bg-black pt-[var(--header-height)] text-white">
+  <div class="container">
+    <div class="relative flex flex-col items-center gap-3 text-center">
+      <p class="mb-0 text-[1.1rem] font-[500] uppercase">Hi, my name is</p>
+      
+      <h1 class="font-bold leading-tight max-lg:text-[2.4rem] lg:text-[3rem] xl:text-[3.5rem]">
+        <span class="text-primary">Anil Kumar</span>
+        <br>
+        <span>I build things for the web</span>
       </h1>
-
-      <p class="md:max-w-[80%] max-lg:text-sm">
-        I’m a Full Stack Web Developer with a primary focus on Frontend Technologies. With a keen
-        eye for detail and robust problem-solving abilities, I have consistently delivered impactful
-        projects with success.
+      
+      <p class="max-lg:text-sm md:max-w-[580px]">
+        I'm a Full Stack Web Developer with a primary focus on Frontend Technologies. With a keen eye for detail and robust problem-solving abilities, I have consistently delivered impactful projects with success.
       </p>
-
-      <div class="flex items-center gap-4 mt-4">
+      
+      <div class="mt-4 flex items-center gap-4">
         @for (item of socials; track $index) {
           <a
-            href="{{ item.url }}"
+            [href]="item.url"
             target="_blank"
             rel="noreferrer noopener"
-            class="flex items-center justify-center w-12 max-sm:w-10 h-12 max-sm:h-10 rounded-full border-2 border-white hover:bg-color-black hover:border-color-black transition-all"
-            [ariaLabel]="item.name"
+            [attr.aria-label]="item.name"
+            [title]="item.name"
+            class="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white transition-colors duration-300 hover:bg-white max-sm:h-10 max-sm:w-10 [&>*]:hover:text-black"
           >
-            <fa-icon [icon]="item.icon" class="text-[22px] max-sm:text-[18px] text-white"></fa-icon>
+            <fa-icon [icon]="item.icon" class="text-white transition-colors duration-300"></fa-icon>
           </a>
         }
       </div>
-    </div>
-
-    <div class="basis-[30%] max-sm:hidden max-sm:-order-1">
-      <img src="/assets/images/hero/hero-2.svg" alt="hero-img" width="100%" height="auto" />
     </div>
   </div>
 </section>
